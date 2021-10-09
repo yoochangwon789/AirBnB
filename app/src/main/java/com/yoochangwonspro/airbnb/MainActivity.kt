@@ -2,6 +2,8 @@ package com.yoochangwonspro.airbnb
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.CameraUpdate
 import com.naver.maps.map.MapView
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
@@ -27,6 +29,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
         naverMap.maxZoom = 18.0
         naverMap.minZoom = 10.0
+
+        val cameraUpdate = CameraUpdate.scrollTo(LatLng(37.497931, 127.027691))
+        naverMap.moveCamera(cameraUpdate)
     }
 
     override fun onStart() {

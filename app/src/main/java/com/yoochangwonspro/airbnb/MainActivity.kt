@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         findViewById(R.id.mapView)
     }
 
+    private lateinit var naverMap: NaverMap
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,8 +22,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mapView.getMapAsync(this)
     }
 
-    override fun onMapReady(naverMap: NaverMap) {
-
+    override fun onMapReady(map: NaverMap) {
     }
 
     override fun onStart() {

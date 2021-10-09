@@ -32,6 +32,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val cameraUpdate = CameraUpdate.scrollTo(LatLng(37.497931, 127.027691))
         naverMap.moveCamera(cameraUpdate)
+
+        val uiSetting = naverMap.uiSettings
+        uiSetting.isLocationButtonEnabled = true
     }
 
     override fun onStart() {

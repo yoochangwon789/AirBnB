@@ -3,10 +3,8 @@ package com.yoochangwonspro.airbnb
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.CameraUpdate
-import com.naver.maps.map.MapView
-import com.naver.maps.map.NaverMap
-import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.*
+import com.naver.maps.map.util.FusedLocationSource
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -15,6 +13,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private lateinit var naverMap: NaverMap
+
+    private lateinit var locationSource: FusedLocationSource
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +35,26 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val uiSetting = naverMap.uiSettings
         uiSetting.isLocationButtonEnabled = true
+
+        locationSource = FusedLocationSource(this@MainActivity, LOCATION_PERMISSION_REQUEST_CODE)
+        naverMap.locationSource = locationSource
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) return
+
+        if (locationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
+            if (!locationSource.isActivated) {
+                naverMap.locationTrackingMode = LocationTrackingMode.None
+            }
+            return
+        }
     }
 
     override fun onStart() {
@@ -71,5 +91,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onLowMemory() {
         super.onLowMemory()
         mapView.onLowMemory()
+    }
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE  = 1000
     }
 }

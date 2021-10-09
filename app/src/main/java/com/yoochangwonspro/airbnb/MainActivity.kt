@@ -3,8 +3,10 @@ package com.yoochangwonspro.airbnb
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.naver.maps.map.MapView
+import com.naver.maps.map.NaverMap
+import com.naver.maps.map.OnMapReadyCallback
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private val mapView: MapView by lazy {
         findViewById(R.id.mapView)
@@ -13,8 +15,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         mapView.onCreate(savedInstanceState)
+
+        mapView.getMapAsync(this)
+    }
+
+    override fun onMapReady(p0: NaverMap) {
+
     }
 
     override fun onStart() {

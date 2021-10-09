@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mapView.getMapAsync(this)
     }
 
-    override fun onMapReady(p0: NaverMap) {
+    override fun onMapReady(naverMap: NaverMap) {
 
     }
 

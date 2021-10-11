@@ -42,11 +42,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         locationSource = FusedLocationSource(this@MainActivity, LOCATION_PERMISSION_REQUEST_CODE)
         naverMap.locationSource = locationSource
 
-        val marker = Marker()
-        marker.position = LatLng(37.501008, 127.029660)
-        marker.map = naverMap
-        marker.icon = MarkerIcons.BLACK
-        marker.iconTintColor = Color.RED
+        getHouseListFromAPI()
+    }
+
+    private fun getHouseListFromAPI() {
+
     }
 
     override fun onRequestPermissionsResult(

@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                     }
 
                     response.body()?.let { dto ->
-                        Log.d("Retrofit", dto.toString())
+                        updateMarker(dto.items)
                     }
                 }
 
@@ -77,10 +77,22 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    private fun updateMarker(houses: List<HouseModel>) {
+        houses.forEach { house ->
+            val marker = Marker()
+            marker.position = LatLng(house.lat, house.lng)
+            // todo 마커 클릭 리스너
+            marker.map = naverMap
+            marker.tag = house.id
+            marker.icon = MarkerIcons.BLACK
+            marker.iconTintColor = Color.RED
+        }
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
@@ -131,6 +143,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     companion object {
-        private const val LOCATION_PERMISSION_REQUEST_CODE  = 1000
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
     }
 }

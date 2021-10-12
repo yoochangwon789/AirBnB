@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mapView.onCreate(savedInstanceState)
 
         mapView.getMapAsync(this)
+
+        viewPager.adapter = viewPagerAdapter
     }
 
     override fun onMapReady(map: NaverMap) {
@@ -74,6 +76,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     response.body()?.let { dto ->
                         updateMarker(dto.items)
+                        viewPagerAdapter.submitList(dto.items)
                     }
                 }
 

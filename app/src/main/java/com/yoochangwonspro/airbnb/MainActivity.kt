@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         findViewById(R.id.houseViewPager)
     }
 
+    private val viewPagerAdapter = HouseViewPagerAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

@@ -3,17 +3,27 @@ package com.yoochangwonspro.airbnb
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class HouseListAdapter : ListAdapter<HouseModel, HouseListAdapter.ViewHolder>(diffUtil) {
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(houseModel: HouseModel) {
-            val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
+            val titleTextView = view.findViewById<TextView>(R.id.itemTitleTextView)
+            val priceTextView = view.findViewById<TextView>(R.id.itemPriceTextView)
+            val thumbnailImageView = view.findViewById<ImageView>(R.id.itemThumbnailImageView)
+
+            titleTextView.text = houseModel.title
+            priceTextView.text = houseModel.price
+            Glide.with(thumbnailImageView.context)
+                .load(houseModel.imgUrl)
+                .into(thumbnailImageView)
         }
     }
 

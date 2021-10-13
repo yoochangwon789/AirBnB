@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/thumbnailImageView"
+        android:id="@+id/itemThumbnailImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="24dp"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/itemTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -26,11 +26,11 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/thumbnailImageView"
+        app:layout_constraintTop_toBottomOf="@id/itemThumbnailImageView"
         tools:text="강남역 최저가!!" />
 
     <TextView
-        android:id="@+id/priceTextView"
+        android:id="@+id/itemPriceTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
@@ -42,7 +42,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintTop_toBottomOf="@id/itemTitleTextView"
         tools:text="24,000원" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

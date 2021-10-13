@@ -3,6 +3,7 @@ package com.yoochangwonspro.airbnb
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,7 @@ class HouseListAdapter : ListAdapter<HouseModel, HouseListAdapter.ViewHolder>(di
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(houseModel: HouseModel) {
-
+            val titleTextView = view.findViewById<TextView>(R.id.titleTextView)
         }
     }
 

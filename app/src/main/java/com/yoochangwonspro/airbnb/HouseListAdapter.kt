@@ -22,17 +22,17 @@ class HouseListAdapter : ListAdapter<HouseModel, HouseListAdapter.ViewHolder>(di
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(currentList[position])
     }
 
     companion object {
         val diffUtil = object : DiffUtil.ItemCallback<HouseModel>() {
             override fun areItemsTheSame(oldItem: HouseModel, newItem: HouseModel): Boolean {
-                TODO("Not yet implemented")
+                return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(oldItem: HouseModel, newItem: HouseModel): Boolean {
-                TODO("Not yet implemented")
+                return oldItem == newItem
             }
 
         }

@@ -1,5 +1,6 @@
 package com.yoochangwonspro.airbnb
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -16,7 +17,8 @@ class HouseListAdapter : ListAdapter<HouseModel, HouseListAdapter.ViewHolder>(di
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
+        val inflater = LayoutInflater.from(parent.context)
+        return ViewHolder(inflater.inflate(R.layout.item_house, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

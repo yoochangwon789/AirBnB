@@ -1,5 +1,6 @@
 package com.yoochangwonspro.airbnb
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -42,7 +43,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, Overlay.OnClickLis
         findViewById(R.id.currentLocationButton)
     }
 
-    private val viewPagerAdapter = HouseViewPagerAdapter()
+    private val viewPagerAdapter = HouseViewPagerAdapter(itemClicked = {
+        val intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, "[지금 이 가격에 예약하세요!!] ${it.title} ${it.price} 사진보기 : ${it.imgUrl}")
+            type = "text/plain"
+        }
+        startActivity(Intent.createChooser(intent, null))
+    })
 
     private val houseListAdapter = HouseListAdapter()
 

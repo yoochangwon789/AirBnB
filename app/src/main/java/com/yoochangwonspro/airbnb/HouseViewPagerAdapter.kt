@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class HouseViewPagerAdapter : ListAdapter<HouseModel, HouseViewPagerAdapter.ItemViewHolder>(diffUtil) {
+class HouseViewPagerAdapter(val itemClicked: (HouseModel) -> Unit) : ListAdapter<HouseModel, HouseViewPagerAdapter.ItemViewHolder>(diffUtil) {
 
     inner class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 

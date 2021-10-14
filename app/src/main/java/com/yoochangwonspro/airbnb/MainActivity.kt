@@ -1,5 +1,6 @@
 package com.yoochangwonspro.airbnb
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -111,6 +112,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, Overlay.OnClickLis
 
         retrofit.create(HouseService::class.java).also {
             it.getHouseList().enqueue(object : Callback<HouseDto> {
+                @SuppressLint("SetTextI18n")
                 override fun onResponse(call: Call<HouseDto>, response: Response<HouseDto>) {
                     if (response.isSuccessful.not()) {
                         // 실패 처리 구현
@@ -121,6 +123,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, Overlay.OnClickLis
                         updateMarker(dto.items)
                         viewPagerAdapter.submitList(dto.items)
                         houseListAdapter.submitList(dto.items)
+
+                        bottomSheetTitleTextView.text = "${dto.items.size}개의 숙소"
                     }
                 }
 

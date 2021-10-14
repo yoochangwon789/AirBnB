@@ -56,6 +56,17 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
         recyclerView.adapter = houseListAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+
+                val selectedHouseModel = viewPagerAdapter.currentList[position]
+                val cameraUpdate = CameraUpdate.scrollTo(LatLng(selectedHouseModel.lat, selectedHouseModel.lng))
+
+                naverMap.moveCamera(cameraUpdate)
+            }
+        })
     }
 
     override fun onMapReady(map: NaverMap) {

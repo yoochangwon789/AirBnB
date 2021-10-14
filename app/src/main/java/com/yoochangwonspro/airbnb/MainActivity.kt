@@ -188,6 +188,15 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, Overlay.OnClickLis
     }
 
     override fun onClick(overlay: Overlay): Boolean {
-        TODO("Not yet implemented")
+        val selectedModel = viewPagerAdapter.currentList.firstOrNull {
+            it.id == overlay.tag
+        }
+
+        selectedModel?.let {
+            val position = viewPagerAdapter.currentList.indexOf(it)
+            viewPager.currentItem = position
+        }
+
+        return true
     }
 }

@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 val selectedHouseModel = viewPagerAdapter.currentList[position]
                 val cameraUpdate = CameraUpdate.scrollTo(LatLng(selectedHouseModel.lat, selectedHouseModel.lng))
+                    .animate(CameraAnimation.Easing)
 
                 naverMap.moveCamera(cameraUpdate)
             }

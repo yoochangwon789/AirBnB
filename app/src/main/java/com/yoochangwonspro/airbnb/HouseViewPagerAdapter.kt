@@ -25,6 +25,10 @@ class HouseViewPagerAdapter(val itemClicked: (HouseModel) -> Unit) : ListAdapter
             Glide.with(thumbnailImageView.context)
                 .load(houseModel.imgUrl)
                 .into(thumbnailImageView)
+
+            view.setOnClickListener {
+                itemClicked(houseModel)
+            }
         }
     }
 
